@@ -1,5 +1,6 @@
 export default {
     namespaced: true,
+    // this store state has three variables
     state() {
         return {
             items: [],
@@ -7,7 +8,10 @@ export default {
             qty: 0
         }
     },
+    // a mutation is an event that can change the state 
+    // each mutation has a string type and a handler
     mutations: {
+        // this handler function accepts a payload
         addProductToCart(state, payload) {
             const productData = payload;
             const productInCartIndex = state.items.findIndex(
@@ -41,12 +45,15 @@ export default {
             state.total -= prodData.price * prodData.qty;
         },
     },
+    // the only way to change state is by committing a mutation
+    // 
     actions: {
         addToCart(context, payload) {
             const productId = payload.id
             const products = context.rootGetters['prods/products']
-            const product =  products.find(prod=>prod.id === productId);
+            const product = products.find(prod => prod.id === productId);
 
+            // commit
             context.commit('addProductToCart', product)
 
 
@@ -55,6 +62,7 @@ export default {
             context.commit('removeProductFromCart', payload)
         }
     },
+    // getters are responsible for observing the variables in the store and provide it to the application
     getters: {
         cartItems(state) {
             return state.items;
