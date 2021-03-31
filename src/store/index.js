@@ -2,6 +2,10 @@ import { createStore } from 'vuex';
 import productsModule from './modules/product.js';
 import cartModule from './modules/cart.js';
 
+/*
+    We use vuex for state management
+    this store has modules(named) and a root one as well
+*/
 const store = createStore({
     modules: {
         prods: productsModule,

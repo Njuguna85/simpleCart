@@ -8,7 +8,7 @@ import store from './store/index.js';
 
 const app = createApp(App)
 
-
+// install vuex and use it in the app
 app.use(router);
 app.use(store)
 
