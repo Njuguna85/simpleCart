@@ -11,7 +11,7 @@ export default {
     // a mutation is an event that can change the state 
     // each mutation has a string type and a handler
     mutations: {
-        // this handler function accepts a payload
+        // this handler function accepts a payload and has access to the state
         addProductToCart(state, payload) {
             const productData = payload;
             const productInCartIndex = state.items.findIndex(
@@ -46,10 +46,12 @@ export default {
         },
     },
     // the only way to change state is by committing a mutation
-    // 
+    // actions have a context and can accept a payload
     actions: {
         addToCart(context, payload) {
             const productId = payload.id
+            // through the context we can access the root store
+            // thus we can also access other stores 
             const products = context.rootGetters['prods/products']
             const product = products.find(prod => prod.id === productId);
 

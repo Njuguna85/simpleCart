@@ -23,6 +23,7 @@ export default {
   props: ['id', 'image', 'title', 'price', 'description'],
   methods: {
     addToCart() {
+      // trigger an action
       this.$store.dispatch('cart/addToCart', {
         id: this.id,
       });

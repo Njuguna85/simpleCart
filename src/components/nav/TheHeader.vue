@@ -27,6 +27,7 @@
 <script>
 export default {
   computed: {
+    // access a store variable
     cartQuantity() {
       return this.$store.getters['cart/cartQty'];
     },
